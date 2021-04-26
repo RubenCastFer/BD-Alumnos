@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,7 +61,7 @@ class MainTest {
 	/**
 	 * toString
 	 */
-	void test01() {
+	void test01() throws SQLException {
 		//InputStream salida = new ByteArrayInputStream(outputStreamCaptor.toByteArray());
 		//Scanner lectorSalida = new Scanner(salida);
 		Main.main(null);

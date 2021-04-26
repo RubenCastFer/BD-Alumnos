@@ -5,33 +5,51 @@ package clases;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException  {
 		System.out.println("Hola Mundo");
 		
-		Connection conexion;
+		Connection conexion = null;
 		
-		String url = "jdbc:mysql://localhost:6033/biblioteca";
+		
 		
 		try {
+			String url = "jdbc:mysql://localhost:6033/biblioteca";
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conexion = DriverManager.getConnection(url,
 
 					"developer",
 					"programaciondaw");
-		
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			String sql = "SELECT * FROM libro;";
+			
+			Statement sentencia = conexion.createStatement();
+			
+			ResultSet rs = sentencia.executeQuery(sql);
+			
+			while (rs.next()) {
+				System.out.println(rs.getString(1));
+			}
+			
+			conexion.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+
+		
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			
 			e1.printStackTrace();
+
+		} finally {
+			conexion.close();
+			
 		}
 		
 		
