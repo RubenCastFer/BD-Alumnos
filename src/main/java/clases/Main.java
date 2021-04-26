@@ -5,14 +5,35 @@ package clases;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Hola Mundo");
+		
+		Connection conexion;
+		
+		String url = "jdbc:mysql://localhost:6033/biblioteca";
+		
+		try {
+			conexion = DriverManager.getConnection(url,
 
+					"developer",
+					"programaciondaw");
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			
+			e1.printStackTrace();
+		}
+		
+		
 	}
 }
